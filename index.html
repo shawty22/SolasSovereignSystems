@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Solas Sovereign Systems — AI infrastructure that never leaves your building. From professional offices to critical institutions.">
+<meta property="og:title" content="Solas Sovereign Systems">
+<meta property="og:description" content="Sovereign AI infrastructure for organisations that cannot afford a breach. Private. Local. Yours.">
+<meta property="og:type" content="website">
+<title>Solas Sovereign Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,200;1,9..144,400;1,9..144,700&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f8fc;--bg2:#eef0f7;--bg3:#e4e8f2;--surface:#fff;--surface2:#f0f3fa;
+  --navy:#0d1f3c;--blue:#2563eb;--blue2:#1d4ed8;--blue-dim:rgba(37,99,235,0.08);
+  --teal:#0ea5a0;--amber:#d97706;--red:#dc2626;
+  --text:#0d1f3c;--text2:#4a5a7a;--text3:#8a96b0;
+  --border:rgba(37,99,235,0.14);--border2:rgba(37,99,235,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:8px;height:8px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.15s}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(37,99,235,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left 0.06s,top 0.06s}
+@keyframes fU{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gPulse{0%,100%{opacity:0.6}50%{opacity:1}}
+@keyframes shieldPulse{0%,100%{opacity:0.15;transform:scale(1)}50%{opacity:0.3;transform:scale(1.04)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes nodePing{0%{r:4;opacity:1}100%{r:18;opacity:0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(247,248,252,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2)}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);text-decoration:none;letter-spacing:0.02em;display:flex;align-items:center;gap:0.5rem}
+.nav-logo-dot{width:7px;height:7px;background:var(--blue);border-radius:50%;display:inline-block}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:1.75rem}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--text2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{font-family:'DM Mono',monospace;font-size:11px;padding:9px 22px;background:var(--blue);color:#fff;border-radius:2px;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s}
+.nav-cta:hover{background:var(--blue2)}
+
+section{position:relative;z-index:1}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 5rem;overflow:hidden;background:var(--navy)}
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fU 0.8s 0.2s ease forwards}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5.5vw,5rem);font-weight:900;line-height:0.96;letter-spacing:-0.03em;margin-bottom:2rem;opacity:0;animation:fU 0.8s 0.4s ease forwards;color:#fff}
+.hero-title .l2{color:#60a5fa}
+.hero-title .l3{display:block;font-weight:200;font-style:italic;color:rgba(255,255,255,0.45);font-size:0.6em;margin-top:0.2em;letter-spacing:-0.01em}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.55);max-width:460px;margin-bottom:2.5rem;line-height:1.85;opacity:0;animation:fU 0.8s 0.6s ease forwards}
+.hero-sub strong{color:rgba(255,255,255,0.85);font-weight:400}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fU 0.8s 0.8s ease forwards}
+.btn-primary{font-family:'DM Mono',monospace;font-size:12px;padding:14px 36px;background:var(--blue);color:#fff;border:none;border-radius:2px;cursor:pointer;letter-spacing:0.08em;font-weight:500;transition:all 0.2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:#3b82f6;transform:translateY(-2px)}
+.btn-secondary{font-family:'DM Mono',monospace;font-size:12px;padding:14px 36px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.18);border-radius:2px;cursor:pointer;letter-spacing:0.08em;transition:all 0.2s;text-decoration:none;display:inline-block}
+.btn-secondary:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+.hero-stats-row{display:flex;align-items:center;gap:0;margin-top:3.5rem;opacity:0;animation:fU 0.8s 1s ease forwards;flex-wrap:wrap;gap:1rem}
+.hero-stat{padding:0 2rem 0 0}
+.hero-stat-num{display:block;font-family:'Fraunces',serif;font-size:2.25rem;font-weight:900;line-height:1;margin-bottom:0.3rem;color:#60a5fa}
+.hero-stat-label{display:block;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase}
+.hero-stat-div{width:1px;height:36px;background:rgba(255,255,255,0.1);margin-right:2rem}
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative;opacity:0;animation:fU 1s 0.5s ease forwards}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:7rem 2rem 4rem}
+  .hero-visual{display:none}
+  .hero-sub{margin:0 auto 2.5rem}
+  .hero-actions,.hero-stats-row{justify-content:center}
+  .hero-stat{padding:0 1rem}
+}
+
+/* SECTION COMMON */
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:3rem;display:flex;align-items:center;gap:1rem}
+.section-tag::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-tag.teal{color:var(--teal)}
+.section-tag.teal::after{background:rgba(14,165,160,0.2)}
+
+/* PILLARS */
+.pillars{padding:7rem 4rem;background:var(--bg)}
+.pillars-inner{max-width:1100px;margin:0 auto}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:1rem}
+@media(max-width:768px){.pillars-grid{grid-template-columns:1fr}}
+.pillar{background:var(--surface);padding:3rem 2.5rem;border:1px solid var(--border2);transition:border-color 0.3s,box-shadow 0.3s}
+.pillar:hover{border-color:var(--border);box-shadow:0 4px 24px rgba(37,99,235,0.07)}
+.pillar-icon-wrap{margin-bottom:2rem}
+.pillar-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;margin-top:1rem;display:block}
+.pillar-label.teal{color:var(--teal)}
+.pillar-label.amber{color:var(--amber)}
+.pillar h3{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:900;color:var(--navy);margin-bottom:1rem;line-height:1.05}
+.pillar p{font-size:0.9rem;color:var(--text2);line-height:1.85}
+
+/* OFFER */
+.offer{padding:7rem 4rem;background:var(--navy)}
+.offer-inner{max-width:1100px;margin:0 auto}
+.offer-intro{max-width:600px;margin-bottom:4rem}
+.offer-intro h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;color:#fff}
+.offer-intro p{color:rgba(255,255,255,0.5);line-height:1.85}
+.offer .section-tag{color:#60a5fa}
+.offer .section-tag::after{background:rgba(96,165,250,0.2)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+@media(max-width:900px){.tiers{grid-template-columns:1fr;background:transparent;gap:1rem}}
+.tier{background:#0d1f3c;padding:3rem 2.5rem;display:flex;flex-direction:column;border-top:2px solid transparent;transition:background 0.3s}
+.tier:hover{background:#132850}
+.tier.featured{border-top-color:#60a5fa;background:#132850}
+.tier-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#60a5fa;margin-bottom:1.25rem}
+.tier h3{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;margin-bottom:0.75rem;line-height:1.1;color:#fff}
+.tier-desc{font-size:0.875rem;color:rgba(255,255,255,0.45);margin-bottom:2rem;line-height:1.75;flex-grow:0}
+.tier-visual{margin-bottom:2rem;display:flex;align-items:center;justify-content:center;height:80px}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2.5rem;flex-grow:1}
+.tier-list li{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.03em;display:flex;align-items:flex-start;gap:0.75rem}
+.tier-list li::before{content:'→';color:#60a5fa;flex-shrink:0}
+.tier-price{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:0.35rem}
+.tier-price span{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);font-weight:400}
+.tier-cta{font-family:'DM Mono',monospace;font-size:11px;padding:12px 24px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);border-radius:2px;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s;display:inline-block;margin-top:1.5rem;align-self:flex-start}
+.tier-cta:hover,.tier.featured .tier-cta{border-color:#60a5fa;color:#60a5fa}
+
+/* HOW */
+.how{padding:7rem 4rem;background:var(--bg)}
+.how-inner{max-width:1100px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+@media(max-width:768px){.how-grid{grid-template-columns:1fr;gap:3rem}}
+.how-text h2{font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,2.75rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;color:var(--navy)}
+.how-text p{color:var(--text2);line-height:1.9;margin-bottom:1.1rem;font-size:0.95rem}
+.how-steps{display:flex;flex-direction:column;gap:0}
+.how-step{display:grid;grid-template-columns:44px 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border2);align-items:start}
+.step-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:var(--blue);line-height:1;padding-top:0.1rem;opacity:0.5}
+.step-body h4{font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;color:var(--navy)}
+.step-body p{font-size:0.85rem;color:var(--text2);line-height:1.75}
+.how-visual{display:flex;align-items:center;justify-content:center}
+
+/* GLAM BRIDGE */
+.glam-bridge{padding:5rem 4rem;background:var(--bg2);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2)}
+.glam-bridge-inner{max-width:760px;margin:0 auto;text-align:center}
+.glam-bridge p{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.25rem}
+.glam-bridge h2{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:400;font-style:italic;color:var(--text2);line-height:1.4;margin-bottom:2rem}
+.glam-link{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue);text-decoration:none;letter-spacing:0.1em;border-bottom:1px solid var(--border);padding-bottom:2px;transition:border-color 0.2s}
+.glam-link:hover{border-color:var(--blue)}
+
+/* FOUNDER */
+.founder{padding:7rem 4rem;background:var(--bg)}
+.founder-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+@media(max-width:768px){.founder-inner{grid-template-columns:1fr;gap:3rem}}
+.founder-text h2{font-family:'Fraunces',serif;font-size:clamp(1.75rem,3vw,2.75rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;color:var(--navy)}
+.founder-text p{color:var(--text2);line-height:1.9;margin-bottom:1.1rem;font-size:0.95rem}
+.founder-name{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;margin-top:2rem;display:block}
+.founder-card{background:var(--navy);padding:3rem;border-radius:2px}
+.founder-card blockquote{font-family:'Fraunces',serif;font-size:1.25rem;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.65;font-weight:300}
+.founder-card cite{display:block;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-top:1.5rem;font-style:normal}
+
+/* CTA */
+.cta-section{padding:7rem 4rem;background:var(--navy);text-align:center}
+.cta-inner{max-width:640px;margin:0 auto}
+.cta-section h2{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,3.75rem);font-weight:900;line-height:1;margin-bottom:1.25rem;color:#fff}
+.cta-section h2 em{font-style:italic;color:#60a5fa}
+.cta-section p{color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:3rem;font-size:1rem}
+.cta-note{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.1em;margin-top:1.5rem}
+
+/* FOOTER */
+footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:0.5rem}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.footer-links a:hover{color:var(--text2)}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.06em}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    Solas
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Inquiry" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO — Shield -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Sovereign AI Infrastructure</p>
+    <h1 class="hero-title">
+      <span class="l1">Your AI.</span>
+      <span class="l2">Your Building.</span>
+      <span class="l3">Nobody else's business.</span>
+    </h1>
+    <p class="hero-sub">
+      Solas deploys <strong>private, local AI systems</strong> that never connect to the cloud.
+      From professional offices to institutions where a breach is not an option.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Inquiry" class="btn-primary">Book a Conversation</a>
+      <a href="#services" class="btn-secondary">See What We Build</a>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hero-stat">
+        <span class="hero-stat-num">0</span>
+        <span class="hero-stat-label">Cloud connections</span>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <span class="hero-stat-label">Data stays local</span>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Day 1</span>
+        <span class="hero-stat-label">Fully operational</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHIELD SVG -->
+  <div class="hero-visual">
+    <svg width="420" height="460" viewBox="0 0 420 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Pulse rings -->
+      <circle cx="210" cy="220" r="160" stroke="rgba(96,165,250,0.06)" stroke-width="1" style="animation:shieldPulse 4s ease-in-out infinite"/>
+      <circle cx="210" cy="220" r="130" stroke="rgba(96,165,250,0.09)" stroke-width="1" style="animation:shieldPulse 4s 1s ease-in-out infinite"/>
+      <!-- Shield body -->
+      <path d="M210 40 L360 100 L360 220 C360 320 280 390 210 420 C140 390 60 320 60 220 L60 100 Z"
+            fill="rgba(37,99,235,0.08)" stroke="#60a5fa" stroke-width="1.5"/>
+      <!-- Inner shield -->
+      <path d="M210 80 L330 128 L330 220 C330 300 268 358 210 384 C152 358 90 300 90 220 L90 128 Z"
+            fill="rgba(37,99,235,0.05)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+      <!-- Lock body -->
+      <rect x="183" y="215" width="54" height="44" rx="4" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <!-- Lock shackle -->
+      <path d="M195 215 L195 200 C195 184 225 184 225 200 L225 215" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Lock keyhole -->
+      <circle cx="210" cy="233" r="6" fill="#60a5fa" opacity="0.7"/>
+      <rect x="207" y="233" width="6" height="10" rx="1" fill="#60a5fa" opacity="0.7"/>
+      <!-- Scan line -->
+      <line x1="60" y1="220" x2="360" y2="220" stroke="rgba(96,165,250,0.08)" stroke-width="1" stroke-dasharray="4 8"/>
+      <!-- Corner marks -->
+      <path d="M60 180 L60 100 L130 100" stroke="rgba(96,165,250,0.25)" stroke-width="1" fill="none"/>
+      <path d="M360 180 L360 100 L290 100" stroke="rgba(96,165,250,0.25)" stroke-width="1" fill="none"/>
+      <!-- Label -->
+      <text x="210" y="400" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.35)" letter-spacing="3">SOVEREIGN · SECURE · LOCAL</text>
+    </svg>
+  </div>
+</section>
+
+<!-- PILLARS — Power / Privacy / Policy -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <p class="section-tag">Why Sovereign AI</p>
+    <div class="pillars-grid">
+
+      <!-- Privacy -->
+      <div class="pillar">
+        <div class="pillar-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4 L42 12 L42 26 C42 36 34 44 24 48 C14 44 6 36 6 26 L6 12 Z" stroke="#2563eb" stroke-width="1.5" fill="rgba(37,99,235,0.06)"/>
+            <circle cx="24" cy="26" r="5" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <path d="M20 26 L20 22 C20 18 28 18 28 22 L28 26" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span class="pillar-label">Privacy</span>
+        </div>
+        <h3>Your data never leaves.</h3>
+        <p>Every document, query, and conversation stays within your walls. No data sent to OpenAI, Google, or Microsoft. No training on your confidential files. No Terms of Service that change overnight.</p>
+      </div>
+
+      <!-- Power -->
+      <div class="pillar">
+        <div class="pillar-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="18" stroke="#0ea5a0" stroke-width="1.5" fill="rgba(14,165,160,0.06)"/>
+            <circle cx="24" cy="24" r="10" stroke="rgba(14,165,160,0.4)" stroke-width="1" stroke-dasharray="2 4"/>
+            <path d="M24 10 L24 24 L32 18" stroke="#0ea5a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="24" r="2.5" fill="#0ea5a0"/>
+          </svg>
+          <span class="pillar-label teal">Power</span>
+        </div>
+        <h3>Efficient by design.</h3>
+        <p>Local AI runs on hardware you own — efficiently, without cloud compute costs that compound every month. Modern open models deliver powerful results on modest infrastructure. You pay once, not forever.</p>
+      </div>
+
+      <!-- Policy -->
+      <div class="pillar">
+        <div class="pillar-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="10" y="6" width="28" height="36" rx="2" stroke="#d97706" stroke-width="1.5" fill="rgba(217,119,6,0.06)"/>
+            <line x1="16" y1="16" x2="32" y2="16" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="22" x2="32" y2="22" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="28" x2="24" y2="28" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="33" cy="35" r="6" fill="rgba(217,119,6,0.12)" stroke="#d97706" stroke-width="1.5"/>
+            <path d="M30 35 L32 37 L36 33" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="pillar-label amber">Policy</span>
+        </div>
+        <h3>Built for compliance.</h3>
+        <p>GDPR, HIPAA, legal professional privilege, classified-adjacent workflows — sovereign AI is the only architecture that satisfies them all by default. Not as a configuration. As a foundation.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — Building icon -->
+<section class="offer" id="services">
+  <div class="offer-inner">
+    <p class="section-tag">What We Build</p>
+    <div class="offer-intro">
+      <h2>From the small office to the critical institution.</h2>
+      <p>Solas delivers sovereign AI at every scale. The architecture is the same — private, local, air-gappable. The scope adjusts to your environment.</p>
+    </div>
+    <div class="tiers">
+
+      <!-- Office -->
+      <div class="tier">
+        <p class="tier-badge">Office</p>
+        <h3>Professional Practice</h3>
+        <p class="tier-desc">Law firms, accountants, medical practices — organisations handling confidential client data that cannot afford cloud exposure.</p>
+        <div class="tier-visual">
+          <!-- Small building -->
+          <svg width="64" height="72" viewBox="0 0 64 72" fill="none">
+            <rect x="16" y="20" width="32" height="44" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.2"/>
+            <rect x="4" y="32" width="12" height="32" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <rect x="48" y="32" width="12" height="32" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <rect x="22" y="28" width="8" height="8" fill="rgba(96,165,250,0.15)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+            <rect x="34" y="28" width="8" height="8" fill="rgba(96,165,250,0.15)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+            <rect x="22" y="42" width="8" height="8" fill="rgba(96,165,250,0.15)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+            <rect x="34" y="42" width="8" height="8" fill="rgba(96,165,250,0.15)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+            <rect x="26" y="55" width="12" height="9" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+            <path d="M16 20 L32 8 L48 20" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.2"/>
+            <!-- AI signal dot -->
+            <circle cx="32" cy="4" r="2" fill="#60a5fa" style="animation:blink 2s ease-in-out infinite"/>
+          </svg>
+        </div>
+        <ul class="tier-list">
+          <li>Private document assistant</li>
+          <li>Local knowledge base</li>
+          <li>Secure internal Q&amp;A</li>
+          <li>Mac Mini or NUC hardware</li>
+          <li>Setup, configuration, support</li>
+        </ul>
+        <p class="tier-price">From €299 <span>/ month</span></p>
+        <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Office%20Enquiry" class="tier-cta">Start a Conversation →</a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="tier featured">
+        <p class="tier-badge">Enterprise</p>
+        <h3>Regulated Organisation</h3>
+        <p class="tier-desc">NGOs, multinationals, healthcare networks, and financial institutions under strict data governance requirements.</p>
+        <div class="tier-visual">
+          <!-- Larger building -->
+          <svg width="64" height="72" viewBox="0 0 64 72" fill="none">
+            <rect x="8" y="12" width="48" height="52" fill="none" stroke="rgba(96,165,250,0.7)" stroke-width="1.4"/>
+            <rect x="14" y="20" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="28" y="20" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="42" y="20" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="14" y="34" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="28" y="34" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="42" y="34" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="14" y="48" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="42" y="48" width="8" height="8" fill="rgba(96,165,250,0.2)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <rect x="24" y="48" width="16" height="16" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.5)" stroke-width="1"/>
+            <path d="M8 12 L32 2 L56 12" fill="none" stroke="rgba(96,165,250,0.7)" stroke-width="1.4"/>
+            <circle cx="32" cy="2" r="2.5" fill="#60a5fa" style="animation:blink 2s 0.5s ease-in-out infinite"/>
+          </svg>
+        </div>
+        <ul class="tier-list">
+          <li>Multi-user AI workspace</li>
+          <li>Custom model fine-tuning</li>
+          <li>Agentic workflow automation</li>
+          <li>Integration with existing systems</li>
+          <li>Dedicated support contract</li>
+        </ul>
+        <p class="tier-price">Custom <span>/ scoped per project</span></p>
+        <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Enterprise%20Enquiry" class="tier-cta">Request a Briefing →</a>
+      </div>
+
+      <!-- Agency -->
+      <div class="tier">
+        <p class="tier-badge">Agency</p>
+        <h3>Critical Infrastructure</h3>
+        <p class="tier-desc">Government bodies, defence-adjacent organisations, and institutions where data sovereignty is a legal and operational requirement.</p>
+        <div class="tier-visual">
+          <!-- Institutional building with columns -->
+          <svg width="64" height="72" viewBox="0 0 64 72" fill="none">
+            <rect x="6" y="22" width="52" height="42" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.2"/>
+            <line x1="6" y1="64" x2="58" y2="64" stroke="rgba(96,165,250,0.5)" stroke-width="1.2"/>
+            <!-- Columns -->
+            <line x1="16" y1="22" x2="16" y2="64" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+            <line x1="26" y1="22" x2="26" y2="64" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+            <line x1="38" y1="22" x2="38" y2="64" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+            <line x1="48" y1="22" x2="48" y2="64" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+            <!-- Pediment -->
+            <path d="M2 22 L32 6 L62 22" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.2"/>
+            <!-- Steps -->
+            <line x1="2" y1="67" x2="62" y2="67" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <line x1="0" y1="70" x2="64" y2="70" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            <!-- Flag/signal -->
+            <circle cx="32" cy="4" r="2.5" fill="#60a5fa" style="animation:blink 2s 1s ease-in-out infinite"/>
+          </svg>
+        </div>
+        <ul class="tier-list">
+          <li>Air-gapped deployment</li>
+          <li>Classified-adjacent architecture</li>
+          <li>ESG + AI compliance reporting</li>
+          <li>Resilience and continuity planning</li>
+          <li>On-site installation and training</li>
+        </ul>
+        <p class="tier-price">Custom <span>/ by engagement</span></p>
+        <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Agency%20Enquiry" class="tier-cta">Get in Touch →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS — Node network SVG -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <p class="section-tag teal">How It Works</p>
+    <div class="how-grid">
+      <div class="how-text">
+        <h2>Running in days, not months.</h2>
+        <p>Solas uses proven open-source AI infrastructure — Ollama, Open WebUI, and curated local models — deployed and configured for your specific environment.</p>
+        <p>No vendor lock-in. No ongoing cloud dependency. No data leaving the building.</p>
+      </div>
+
+      <!-- Node network visual -->
+      <div class="how-visual">
+        <svg width="360" height="320" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connection lines -->
+          <line x1="180" y1="160" x2="80" y2="80" stroke="rgba(14,165,160,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="180" y1="160" x2="280" y2="80" stroke="rgba(14,165,160,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="180" y1="160" x2="60" y2="200" stroke="rgba(14,165,160,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="180" y1="160" x2="300" y2="200" stroke="rgba(14,165,160,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="180" y1="160" x2="160" y2="280" stroke="rgba(14,165,160,0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="80" y1="80" x2="280" y2="80" stroke="rgba(14,165,160,0.1)" stroke-width="1" stroke-dasharray="4 8"/>
+          <line x1="60" y1="200" x2="300" y2="200" stroke="rgba(14,165,160,0.1)" stroke-width="1" stroke-dasharray="4 8"/>
+          <!-- Central node (your building) -->
+          <circle cx="180" cy="160" r="28" fill="rgba(14,165,160,0.1)" stroke="#0ea5a0" stroke-width="1.5"/>
+          <circle cx="180" cy="160" r="16" fill="rgba(14,165,160,0.15)" stroke="rgba(14,165,160,0.4)" stroke-width="1"/>
+          <text x="180" y="155" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#0ea5a0" letter-spacing="1">YOUR</text>
+          <text x="180" y="167" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#0ea5a0" letter-spacing="1">OFFICE</text>
+          <!-- Ping animation on centre -->
+          <circle cx="180" cy="160" r="4" fill="#0ea5a0">
+            <animate attributeName="r" values="4;22;4" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Peripheral nodes — labelled -->
+          <circle cx="80" cy="80" r="18" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.4)" stroke-width="1"/>
+          <text x="80" y="76" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">LAW</text>
+          <text x="80" y="86" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">FIRM</text>
+          <circle cx="280" cy="80" r="18" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.4)" stroke-width="1"/>
+          <text x="280" y="76" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">MEDICAL</text>
+          <text x="280" y="86" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">PRACTICE</text>
+          <circle cx="60" cy="200" r="18" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.4)" stroke-width="1"/>
+          <text x="60" y="196" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">GOVT</text>
+          <text x="60" y="206" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">AGENCY</text>
+          <circle cx="300" cy="200" r="18" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.4)" stroke-width="1"/>
+          <text x="300" y="196" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">NGO</text>
+          <text x="300" y="206" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">FIELD</text>
+          <circle cx="160" cy="280" r="18" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.4)" stroke-width="1"/>
+          <text x="160" y="276" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">FINANCE</text>
+          <text x="160" y="286" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(37,99,235,0.6)" letter-spacing="0.5">FIRM</text>
+          <!-- X marks — no cloud -->
+          <text x="180" y="32" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(220,38,38,0.4)" letter-spacing="2">✕ NO CLOUD</text>
+        </svg>
+      </div>
+
+      <div class="how-steps">
+        <div class="how-step">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <h4>Discovery call</h4>
+            <p>We understand your environment, your data types, your compliance requirements, and what you actually need AI to do.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <h4>Hardware selection</h4>
+            <p>We specify the right local hardware — from a Mac Mini for a small office to a dedicated server for institutional deployments.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <h4>Deployment &amp; configuration</h4>
+            <p>We install, configure, and test the full stack on-site. Your team gets a working AI assistant on day one.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <span class="step-num">04</span>
+          <div class="step-body">
+            <h4>Ongoing support</h4>
+            <p>Model updates, capability expansions, and support — all without your data touching the internet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLAM BRIDGE -->
+<section class="glam-bridge">
+  <div class="glam-bridge-inner">
+    <p>Part of the GLAM movement</p>
+    <h2>"The shift to local AI is not just a technical choice. It is a policy choice, a power choice, and a privacy choice."</h2>
+    <a href="https://globallocal.ai" class="glam-link" target="_blank" rel="noopener">globallocal.ai — Global Local AI Mobilization →</a>
+  </div>
+</section>
+
+<!-- ABOUT / FOUNDER -->
+<section class="founder" id="about">
+  <div class="founder-inner">
+    <div class="founder-text">
+      <p class="section-tag">Who We Are</p>
+      <h2>Built by someone who uses it every day.</h2>
+      <p>Solas Sovereign Systems was founded on a simple conviction: the organisations that most need AI assistance are precisely the ones who cannot safely use cloud AI.</p>
+      <p>We build the infrastructure that makes sovereign AI practical — not a research project, not a proof of concept, but a working system installed in your building this week.</p>
+      <span class="founder-name">Ciaran O'Hara — Founder, Solas Sovereign Systems</span>
+    </div>
+    <div class="founder-card">
+      <blockquote>
+        "Every law firm, every clinic, every government body I spoke to had the same answer: we want AI, but we cannot send our data to San Francisco. We built Solas so they don't have to."
+      </blockquote>
+      <cite>Ciaran O'Hara · Founder</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <h2>Ready to keep your<br><em>data sovereign?</em></h2>
+    <p>Tell us about your organisation and what you need AI to do. We'll tell you honestly whether Solas is the right fit — and what it would take to have you running within a week.</p>
+    <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Sovereign%20Systems%20Enquiry" class="btn-primary">Book a Conversation</a>
+    <p class="cta-note">No sales deck. No commitment. Just a conversation.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="nav-logo-dot"></span>
+    Solas Sovereign Systems
+  </div>
+  <div class="footer-links">
+    <a href="https://globallocal.ai" target="_blank" rel="noopener">GLAM</a>
+    <a href="mailto:ciaran.ohara@gmail.com">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 Solas Sovereign Systems · solassovereignsystems.ai</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2.5)';});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';});
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.1});
+document.querySelectorAll('.pillar,.tier,.how-step,.founder-card').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
