@@ -1,32 +1,38 @@
 # Solas Sovereign Systems
 
-Commercial product: sovereign AI infrastructure for organisations that cannot afford a breach. Private, local, on-premises.
+**Sovereign AI infrastructure for organisations that cannot afford a breach.**  
+Private. Local. Yours.
+
+🌐 [solassovereignsystems.ai](https://solassovereignsystems.ai)  
+🌍 Part of the [GLAM movement](https://globallocal.ai) — Global Local AI Mobilization
+
+---
 
 ## What It Is
 
-Solas is the commercial arm of the sovereign AI stack. It packages the LocalAIStack into a deployable product for professional offices, clinics, legal firms, and critical institutions that need AI capabilities without data ever leaving their building.
+Solas deploys private, local AI systems that never connect to the cloud — from small professional offices to government-adjacent critical institutions.
 
-## Positioning
+## Three Tiers
 
-- **Not cloud AI.** Everything runs on your hardware, in your building.
-- **Target customers:** law firms, medical practices, accountants, councils — anyone with sensitive data and compliance obligations.
-- **Differentiator:** sovereign by default, not as a premium add-on.
+| Tier | Who | Price |
+|---|---|---|
+| **Office** | Law firms, accountants, medical practices | From €299/month |
+| **Enterprise** | NGOs, multinationals, regulated organisations | Custom |
+| **Agency** | Government, defence-adjacent, critical infrastructure | Custom / engagement |
 
-## Contents
+## Three Pillars
 
-- `index.html` — public website (deployed to GitHub Pages)
-- `network.png` — network architecture diagram
-- `orbital.png` — product/brand visual
+- **Privacy** — data never leaves your building
+- **Power** — local hardware, no compounding cloud costs
+- **Policy** — GDPR, HIPAA, and classified-adjacent compliance by default
 
-## Deployment
+## Tech Stack
 
-Static site, deployed via GitHub Pages from `shawty22/solassovereignsystems`.
+Built on proven open-source infrastructure:
+- [Ollama](https://ollama.ai) — local model runtime
+- [Open WebUI](https://openwebui.com) — private AI interface
+- Curated open models (Llama, Mistral, Qwen families)
 
-## Status
+---
 
-Site built and ready to deploy. Awaiting domain and launch decision.
-
-## Related Projects
-
-- `LocalAIStack` — the infrastructure Solas packages and sells
-- `Glam-OS` — the OS layer above the stack
+*Solas Sovereign Systems — [solassovereignsystems.ai](https://solassovereignsystems.ai)*
