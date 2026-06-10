@@ -65,3 +65,29 @@ consumer-flashy, never defense/military framing.
 
 > Honesty rule: enterprise cues describe **architecture and alignment** (e.g. "HIPAA-aligned",
 > "GDPR-ready", "air-gap capable") — never claim certifications (ISO 27001, SOC 2, etc.) we don't hold.
+
+---
+
+## Reference teardown — Anuba Technologies (2026-06-10, BACKLOG — do not copy yet)
+
+https://anubatechnologies.com/ — edge-AI / computer-vision for QSR. Flagged by Ciaran as "much sexier."
+Note: their **positioning mirrors Solas** (edge / on-prem / "No Cloud, No Latency, No Blindspots" /
+privacy-by-design / "AWS went down, our edge never blinked") — useful validation of our private/local angle.
+
+**Why it reads as premium:**
+- Ruthless palette: **black + white + ONE burnt-orange accent**. No gradients, no second colour.
+- Massive bold grotesque (Helvetica-style) headlines; huge, tight, editorial.
+- **Scroll-linked word reveal** — headline fills gray→black word-by-word as you scroll; key words snap to accent. (Signature move.)
+- Angular / diagonal section cuts (black-meets-white slants), not flat horizontal bands.
+- Morphing frosted pill-nav ("Request a Demo" → "Demo" on scroll).
+- Terse, declarative copy — every line a short statement ending in a period.
+
+**Steal for Solas (priority order) — NOT today:**
+- [ ] Scroll-linked word-highlight on big section headlines (highest sexiness-per-effort).
+- [ ] Tighten to ONE hero accent (let teal lead; demote blue/gold to rare touches).
+- [ ] Angular section dividers between dark sections.
+- [ ] Heavier/bigger hero type + terser, more declarative copy.
+- [ ] Morphing nav ("Book a Conversation" → "Book").
+
+> Caveat: Anuba is ONE product / ONE message, so it can be that minimal. Solas is a consultancy +
+> 5 service lines + initiatives — borrow the *craft and discipline*, not the literal sparseness.
