@@ -44,8 +44,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2.5rem;displa
 .nav-links{display:flex;gap:1.75rem}
 .nav-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--text2);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--blue)}
-.nav-cta{font-family:'DM Mono',monospace;font-size:11px;padding:9px 22px;background:var(--blue);color:#fff;border-radius:2px;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s}
+.nav-cta{font-family:'DM Mono',monospace;font-size:11px;padding:9px 22px;background:var(--blue);color:#fff;border-radius:2px;text-decoration:none;letter-spacing:0.08em;transition:all 0.2s;white-space:nowrap}
 .nav-cta:hover{background:var(--blue2)}
+@media(max-width:880px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
 
 section{position:relative;z-index:1}
 
@@ -170,6 +171,43 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
 .footer-links a{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
 .footer-links a:hover{color:var(--text2)}
 .footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.06em}
+
+/* INTELLIGENCE SYSTEMS */
+.intel{padding:7rem 4rem;background:var(--bg2)}
+.intel-inner{max-width:1100px;margin:0 auto}
+.intel-intro{max-width:640px;margin-bottom:3.5rem}
+.intel-intro h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.05;margin-bottom:1.25rem;color:var(--navy)}
+.intel-intro p{color:var(--text2);line-height:1.85}
+.intel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:900px){.intel-grid{grid-template-columns:1fr}}
+.intel-card{background:var(--surface);border:1px solid var(--border2);border-radius:3px;padding:2.5rem 2rem;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+.intel-card:hover{border-color:var(--border);transform:translateY(-3px);box-shadow:0 12px 32px rgba(13,31,60,0.09)}
+.intel-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:1.25rem}
+.intel-card h3{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;line-height:1.12}
+.intel-card p{font-size:0.875rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem}
+.intel-card ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.intel-card li{font-family:'DM Mono',monospace;font-size:10.5px;color:var(--text3);letter-spacing:0.03em;display:flex;gap:0.6rem;align-items:flex-start}
+.intel-card li::before{content:'—';color:var(--blue);flex-shrink:0}
+
+/* CREDENTIALS */
+.creds{margin-top:2.25rem;margin-bottom:0.5rem}
+.creds-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.creds-row{display:flex;flex-wrap:wrap;gap:0.55rem}
+.cred{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text2);border:1px solid var(--border);border-radius:2px;padding:7px 12px;background:var(--surface);white-space:nowrap}
+.cred strong{color:var(--navy);font-weight:500}
+
+/* PARTNERS / ECOSYSTEM */
+.partners{padding:6rem 4rem;background:var(--bg)}
+.partners-inner{max-width:1100px;margin:0 auto}
+.partners-head{max-width:620px;margin-bottom:2.5rem}
+.partners-head h2{font-family:'Fraunces',serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;line-height:1.08;margin-bottom:1rem;color:var(--navy)}
+.partners-head p{color:var(--text2);line-height:1.85;font-size:0.95rem}
+.partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:3px;overflow:hidden}
+@media(max-width:768px){.partners-grid{grid-template-columns:1fr 1fr}}
+.partner{background:var(--surface);padding:2.25rem 1.5rem;text-align:center;transition:background 0.3s}
+.partner:hover{background:var(--surface2)}
+.partner-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;line-height:1.1}
+.partner-role{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -186,6 +224,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
   <div class="nav-right">
     <div class="nav-links">
       <a href="#services">Services</a>
+      <a href="#intelligence">Intelligence</a>
       <a href="#how">How It Works</a>
       <a href="#about">About</a>
     </div>
@@ -428,6 +467,80 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
   </div>
 </section>
 
+<!-- INTELLIGENCE SYSTEMS -->
+<section class="intel" id="intelligence">
+  <div class="intel-inner">
+    <p class="section-tag">Intelligence Systems</p>
+    <div class="intel-intro">
+      <h2>Beyond assistants — sovereign intelligence for infrastructure, governance, and impact.</h2>
+      <p>Where the deployment tiers put a private AI assistant in your building, our intelligence systems apply local AI to harder questions — in energy, public service, and sustainability — entirely on infrastructure you control, with every answer traceable to its source.</p>
+    </div>
+    <div class="intel-grid">
+
+      <!-- Data Center Intelligence -->
+      <div class="intel-card">
+        <span class="intel-tag">Data Center Intelligence</span>
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="8" width="32" height="9" rx="1.5" stroke="#2563eb" stroke-width="1.5" fill="rgba(37,99,235,0.06)"/>
+          <rect x="8" y="19.5" width="32" height="9" rx="1.5" stroke="#2563eb" stroke-width="1.5" fill="rgba(37,99,235,0.06)"/>
+          <rect x="8" y="31" width="32" height="9" rx="1.5" stroke="#2563eb" stroke-width="1.5" fill="rgba(37,99,235,0.06)"/>
+          <circle cx="13" cy="12.5" r="1.5" fill="#2563eb"/>
+          <circle cx="13" cy="24" r="1.5" fill="#2563eb"/>
+          <circle cx="13" cy="35.5" r="1.5" fill="#0ea5a0"/>
+          <line x1="30" y1="12.5" x2="35" y2="12.5" stroke="rgba(37,99,235,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="30" y1="24" x2="35" y2="24" stroke="rgba(37,99,235,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <h3>Site, power, and capacity intelligence.</h3>
+        <p>Local AI applied to data-center siting, energy and water footprint, and capacity planning — turning fragmented infrastructure data into clear, source-attributed analysis.</p>
+        <ul>
+          <li>Energy &amp; water footprint modelling</li>
+          <li>Siting &amp; capacity analysis</li>
+          <li>Efficiency &amp; utilisation intelligence</li>
+        </ul>
+      </div>
+
+      <!-- Civic Intelligence -->
+      <div class="intel-card">
+        <span class="intel-tag">Civic Intelligence</span>
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+          <path d="M6 18 L24 6 L42 18" stroke="#0ea5a0" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          <line x1="9" y1="18" x2="9" y2="38" stroke="#0ea5a0" stroke-width="1.5"/>
+          <line x1="18" y1="18" x2="18" y2="38" stroke="#0ea5a0" stroke-width="1.5"/>
+          <line x1="30" y1="18" x2="30" y2="38" stroke="#0ea5a0" stroke-width="1.5"/>
+          <line x1="39" y1="18" x2="39" y2="38" stroke="#0ea5a0" stroke-width="1.5"/>
+          <line x1="5" y1="42" x2="43" y2="42" stroke="#0ea5a0" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="24" cy="13" r="1.8" fill="#0ea5a0"/>
+        </svg>
+        <h3>AI for public bodies, on public terms.</h3>
+        <p>Councils, agencies, and civic institutions need to read, summarise, and reason over public records without surrendering them to commercial cloud AI. We build that capability locally.</p>
+        <ul>
+          <li>Policy &amp; document analysis</li>
+          <li>Public-record search &amp; summary</li>
+          <li>Constituent service workflows</li>
+        </ul>
+      </div>
+
+      <!-- ESG Intelligence -->
+      <div class="intel-card">
+        <span class="intel-tag">ESG Intelligence</span>
+        <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="18" stroke="#d97706" stroke-width="1.5" fill="rgba(217,119,6,0.05)"/>
+          <path d="M24 33 C24 33 14 27 14 19 C14 15 18 13 21 15 C22.5 16 24 18 24 18 C24 18 25.5 16 27 15 C30 13 34 15 34 19 C34 27 24 33 24 33 Z" stroke="#d97706" stroke-width="1.5" fill="rgba(217,119,6,0.1)" stroke-linejoin="round"/>
+          <path d="M24 18 L24 33" stroke="#d97706" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <h3>Defensible ESG, measured at source.</h3>
+        <p>Sustainability and ESG reporting backed by local AI — including the AI-energy disclosure regulators are beginning to require — with every figure traceable, auditable, and yours.</p>
+        <ul>
+          <li>ESG &amp; sustainability reporting</li>
+          <li>AI-energy &amp; emissions disclosure</li>
+          <li>Audit-ready, source-traceable metrics</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- HOW IT WORKS — Node network SVG -->
 <section class="how" id="how">
   <div class="how-inner">
@@ -515,12 +628,41 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
   </div>
 </section>
 
+<!-- PARTNERS / ECOSYSTEM -->
+<section class="partners" id="partners">
+  <div class="partners-inner">
+    <p class="section-tag teal">Ecosystem &amp; Partnerships</p>
+    <div class="partners-head">
+      <h2>Built on proven, open foundations.</h2>
+      <p>No black boxes and no lock-in. Solas is assembled from the most trusted open-source AI infrastructure, grounded in independent science and research through the GLAM movement.</p>
+    </div>
+    <div class="partners-grid">
+      <div class="partner">
+        <div class="partner-name">Ollama</div>
+        <div class="partner-role">Local model runtime</div>
+      </div>
+      <div class="partner">
+        <div class="partner-name">Open WebUI</div>
+        <div class="partner-role">Private interface</div>
+      </div>
+      <div class="partner">
+        <div class="partner-name">Llama · Mistral · Qwen</div>
+        <div class="partner-role">Open model families</div>
+      </div>
+      <div class="partner">
+        <div class="partner-name">GLAM</div>
+        <div class="partner-role">Science &amp; research partner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- GLAM BRIDGE -->
 <section class="glam-bridge">
   <div class="glam-bridge-inner">
-    <p>Part of the GLAM movement</p>
-    <h2>"The shift to local AI is not just a technical choice. It is a policy choice, a power choice, and a privacy choice."</h2>
-    <a href="https://globallocal.ai" class="glam-link" target="_blank" rel="noopener">globallocal.ai — Global Local AI Mobilization →</a>
+    <p>Science &amp; Research · The GLAM Movement</p>
+    <h2>"Solas is the commercial delivery arm. The science, research, and policy behind local AI live in GLAM — the Global Local AI Mobilization."</h2>
+    <a href="https://globallocal.ai" class="glam-link" target="_blank" rel="noopener">globallocal.ai — research, science &amp; policy →</a>
   </div>
 </section>
 
@@ -529,9 +671,21 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
   <div class="founder-inner">
     <div class="founder-text">
       <p class="section-tag">Who We Are</p>
-      <h2>Built by someone who uses it every day.</h2>
-      <p>Solas Sovereign Systems was founded on a simple conviction: the organisations that most need AI assistance are precisely the ones who cannot safely use cloud AI.</p>
-      <p>We build the infrastructure that makes sovereign AI practical — not a research project, not a proof of concept, but a working system installed in your building this week.</p>
+      <h2>Built by a product and infrastructure specialist — not a reseller.</h2>
+      <p>Solas was founded by Ciaran O'Hara, a PMP-certified product and technology consultant whose work spans some of the most demanding environments in technology, aviation, and climate.</p>
+      <p>Shipping real systems inside large, security-conscious organisations takes the exact discipline sovereign AI deployment demands: rigour, discretion, and infrastructure that actually works on day one — not a proof of concept.</p>
+      <div class="creds">
+        <p class="creds-label">Selected engagements &amp; affiliations</p>
+        <div class="creds-row">
+          <span class="cred"><strong>Apple</strong></span>
+          <span class="cred"><strong>Meta</strong></span>
+          <span class="cred"><strong>Marvell</strong></span>
+          <span class="cred"><strong>SFO International</strong></span>
+          <span class="cred"><strong>Climatebase</strong>&nbsp;Fellow</span>
+          <span class="cred"><strong>Stanford</strong>&nbsp;Product Design</span>
+          <span class="cred"><strong>PMP®</strong>&nbsp;Certified</span>
+        </div>
+      </div>
       <span class="founder-name">Ciaran O'Hara — Founder, Solas Sovereign Systems</span>
     </div>
     <div class="founder-card">
@@ -549,7 +703,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
     <h2>Ready to keep your<br><em>data sovereign?</em></h2>
     <p>Tell us about your organisation and what you need AI to do. We'll tell you honestly whether Solas is the right fit — and what it would take to have you running within a week.</p>
     <a href="mailto:ciaran.ohara@gmail.com?subject=Solas%20Sovereign%20Systems%20Enquiry" class="btn-primary">Book a Conversation</a>
-    <p class="cta-note">No sales deck. No commitment. Just a conversation.</p>
+    <p class="cta-note">Now booking discovery calls this week · No sales deck · No commitment</p>
   </div>
 </section>
 
@@ -579,7 +733,7 @@ document.querySelectorAll('a,button').forEach(el=>{
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
 },{threshold:0.1});
-document.querySelectorAll('.pillar,.tier,.how-step,.founder-card').forEach(el=>{
+document.querySelectorAll('.pillar,.tier,.how-step,.founder-card,.intel-card,.partner').forEach(el=>{
   el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';
   obs.observe(el);
 });
