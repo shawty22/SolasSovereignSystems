@@ -200,8 +200,6 @@ footer{border-top:1px solid var(--line);padding:3rem 0 2.5rem}
 .topbar{transform-origin:left;transform:scaleX(0);transition:transform .12s linear;will-change:transform}
 nav{transition:padding .3s ease,background .3s ease}
 nav.scrolled{padding-top:0.7rem;padding-bottom:0.7rem;background:rgba(9,19,34,0.95)}
-.hero-vis svg{animation:hvspin 110s linear infinite;transform-origin:center}
-@keyframes hvspin{to{transform:rotate(360deg)}}
 .hw{display:inline-block;opacity:0;transform:translateY(16px);animation:hwUp .6s cubic-bezier(.2,.7,.3,1) forwards}
 @keyframes hwUp{to{opacity:1;transform:none}}
 /* PRINCIPLES */
@@ -269,22 +267,42 @@ nav.scrolled{padding-top:0.7rem;padding-bottom:0.7rem;background:rgba(9,19,34,0.
     </div>
     <div class="hero-vis" aria-hidden="true">
       <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rsweep" cx="210" cy="210" r="180" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3fb3a2" stop-opacity="0.34"/>
+            <stop offset="0.65" stop-color="#3fb3a2" stop-opacity="0.10"/>
+            <stop offset="1" stop-color="#3fb3a2" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
         <circle cx="210" cy="210" r="180" stroke="rgba(110,163,239,0.28)" stroke-width="1.3"/>
-        <circle cx="210" cy="210" r="135" stroke="rgba(110,163,239,0.34)" stroke-width="1.3"/>
-        <circle cx="210" cy="210" r="90" stroke="rgba(63,179,162,0.48)" stroke-width="1.3"/>
-        <circle cx="210" cy="210" r="45" stroke="rgba(63,179,162,0.6)" stroke-width="1.3"/>
-        <line x1="30" y1="210" x2="390" y2="210" stroke="rgba(110,163,239,0.18)" stroke-width="1"/>
-        <line x1="210" y1="30" x2="210" y2="390" stroke="rgba(110,163,239,0.18)" stroke-width="1"/>
-        <line x1="82" y1="82" x2="338" y2="338" stroke="rgba(110,163,239,0.13)" stroke-width="1"/>
-        <line x1="338" y1="82" x2="82" y2="338" stroke="rgba(110,163,239,0.13)" stroke-width="1"/>
-        <circle cx="210" cy="210" r="5.5" fill="#3fb3a2"/>
-        <circle cx="300" cy="165" r="4.5" fill="#6ea3ef"/><circle cx="138" cy="262" r="4.5" fill="#6ea3ef"/>
-        <circle cx="255" cy="300" r="4" fill="#c9a766"/><circle cx="150" cy="120" r="4" fill="#3fb3a2"/>
-        <circle cx="330" cy="255" r="3.5" fill="#6ea3ef"/><circle cx="110" cy="180" r="3.5" fill="#c9a766"/>
-        <line x1="210" y1="210" x2="300" y2="165" stroke="rgba(110,163,239,0.5)" stroke-width="1.2"/>
-        <line x1="210" y1="210" x2="138" y2="262" stroke="rgba(110,163,239,0.5)" stroke-width="1.2"/>
-        <line x1="210" y1="210" x2="150" y2="120" stroke="rgba(63,179,162,0.45)" stroke-width="1.2"/>
-        <line x1="210" y1="210" x2="255" y2="300" stroke="rgba(201,167,102,0.42)" stroke-width="1.2"/>
+        <circle cx="210" cy="210" r="135" stroke="rgba(110,163,239,0.22)" stroke-width="1"/>
+        <circle cx="210" cy="210" r="90" stroke="rgba(63,179,162,0.32)" stroke-width="1"/>
+        <circle cx="210" cy="210" r="45" stroke="rgba(63,179,162,0.42)" stroke-width="1"/>
+        <line x1="30" y1="210" x2="390" y2="210" stroke="rgba(110,163,239,0.14)" stroke-width="1"/>
+        <line x1="210" y1="30" x2="210" y2="390" stroke="rgba(110,163,239,0.14)" stroke-width="1"/>
+        <line x1="82" y1="82" x2="338" y2="338" stroke="rgba(110,163,239,0.10)" stroke-width="1"/>
+        <line x1="338" y1="82" x2="82" y2="338" stroke="rgba(110,163,239,0.10)" stroke-width="1"/>
+        <g>
+          <path d="M210 210 L210 30 A180 180 0 0 0 41 148.4 Z" fill="url(#rsweep)"/>
+          <line x1="210" y1="210" x2="210" y2="30" stroke="#3fb3a2" stroke-width="6" opacity="0.16" stroke-linecap="round"/>
+          <line x1="210" y1="210" x2="210" y2="30" stroke="#3fb3a2" stroke-width="2" stroke-linecap="round"/>
+          <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 210 210" to="360 210 210" dur="5s" repeatCount="indefinite"/>
+        </g>
+        <circle cx="210" cy="210" r="5" fill="#3fb3a2"/>
+        <circle cx="300" cy="165" r="4.5" fill="#6ea3ef"/>
+        <circle cx="138" cy="262" r="4.5" fill="#6ea3ef"/>
+        <circle cx="255" cy="300" r="4" fill="#c9a766"/>
+        <circle cx="150" cy="120" r="4" fill="#3fb3a2"/>
+        <circle cx="330" cy="255" r="3.5" fill="#6ea3ef"/>
+        <circle cx="110" cy="180" r="3.5" fill="#c9a766"/>
+        <circle cx="300" cy="165" r="4.5" fill="none" stroke="#6ea3ef" stroke-width="1">
+          <animate attributeName="r" values="4.5;15;4.5" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="150" cy="120" r="4" fill="none" stroke="#3fb3a2" stroke-width="1">
+          <animate attributeName="r" values="4;14;4" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
       </svg>
     </div>
   </div>
