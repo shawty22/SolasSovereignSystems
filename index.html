@@ -51,17 +51,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2.5rem;displa
 section{position:relative;z-index:1}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 5rem;overflow:hidden;background:var(--navy)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 4rem 5rem;overflow:hidden;background:radial-gradient(ellipse 70% 55% at 72% 28%,rgba(37,99,235,0.22),transparent 60%),radial-gradient(ellipse 55% 50% at 12% 88%,rgba(14,165,160,0.12),transparent 55%),#0a1730}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(96,165,250,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(96,165,250,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 60% 40%,#000,transparent 75%);pointer-events:none}
 .hero-content{position:relative;z-index:2}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fU 0.8s 0.2s ease forwards}
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5.5vw,5rem);font-weight:900;line-height:0.96;letter-spacing:-0.03em;margin-bottom:2rem;opacity:0;animation:fU 0.8s 0.4s ease forwards;color:#fff}
-.hero-title .l2{color:#60a5fa}
+.hero-title .l2{background:linear-gradient(100deg,#60a5fa 10%,#5eead4 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-title .l3{display:block;font-weight:200;font-style:italic;color:rgba(255,255,255,0.45);font-size:0.6em;margin-top:0.2em;letter-spacing:-0.01em}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.55);max-width:460px;margin-bottom:2.5rem;line-height:1.85;opacity:0;animation:fU 0.8s 0.6s ease forwards}
 .hero-sub strong{color:rgba(255,255,255,0.85);font-weight:400}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fU 0.8s 0.8s ease forwards}
-.btn-primary{font-family:'DM Mono',monospace;font-size:12px;padding:14px 36px;background:var(--blue);color:#fff;border:none;border-radius:2px;cursor:pointer;letter-spacing:0.08em;font-weight:500;transition:all 0.2s;text-decoration:none;display:inline-block}
-.btn-primary:hover{background:#3b82f6;transform:translateY(-2px)}
+.btn-primary{font-family:'DM Mono',monospace;font-size:12px;padding:14px 36px;background:linear-gradient(120deg,#2563eb,#1d4ed8);color:#fff;border:none;border-radius:3px;cursor:pointer;letter-spacing:0.08em;font-weight:500;transition:all 0.25s;text-decoration:none;display:inline-block;box-shadow:0 6px 22px rgba(37,99,235,0.35)}
+.btn-primary:hover{background:linear-gradient(120deg,#3b82f6,#2563eb);transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,99,235,0.5)}
 .btn-secondary{font-family:'DM Mono',monospace;font-size:12px;padding:14px 36px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.18);border-radius:2px;cursor:pointer;letter-spacing:0.08em;transition:all 0.2s;text-decoration:none;display:inline-block}
 .btn-secondary:hover{border-color:rgba(255,255,255,0.5);color:#fff}
 .hero-stats-row{display:flex;align-items:center;gap:0;margin-top:3.5rem;opacity:0;animation:fU 0.8s 1s ease forwards;flex-wrap:wrap;gap:1rem}
@@ -69,7 +70,7 @@ section{position:relative;z-index:1}
 .hero-stat-num{display:block;font-family:'Fraunces',serif;font-size:2.25rem;font-weight:900;line-height:1;margin-bottom:0.3rem;color:#60a5fa}
 .hero-stat-label{display:block;font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase}
 .hero-stat-div{width:1px;height:36px;background:rgba(255,255,255,0.1);margin-right:2rem}
-.hero-visual{display:flex;align-items:center;justify-content:center;position:relative;opacity:0;animation:fU 1s 0.5s ease forwards}
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative;z-index:2;opacity:0;animation:fU 1s 0.5s ease forwards;filter:drop-shadow(0 0 40px rgba(37,99,235,0.25))}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;text-align:center;padding:7rem 2rem 4rem}
   .hero-visual{display:none}
@@ -208,6 +209,17 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
 .partner:hover{background:var(--surface2)}
 .partner-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;line-height:1.1}
 .partner-role{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase}
+
+/* POLISH */
+body::after{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#0ea5a0,#60a5fa);z-index:200}
+.status-pill{display:inline-flex;align-items:center;gap:0.55rem;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#7dd3c0;background:rgba(14,165,160,0.1);border:1px solid rgba(14,165,160,0.3);padding:6px 14px;border-radius:100px;margin-bottom:1.5rem;opacity:0;animation:fU 0.8s 0.1s ease forwards}
+.status-pill .dot{width:6px;height:6px;border-radius:50%;background:#2dd4bf;animation:ping 2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(45,212,191,0.6)}70%{box-shadow:0 0 0 7px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+.intel-card,.tier{position:relative;overflow:hidden}
+.intel-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2563eb,#0ea5a0);transform:scaleX(0);transform-origin:left;transition:transform 0.45s ease}
+.intel-card:hover::after{transform:scaleX(1)}
+.cta-section{background:radial-gradient(ellipse 60% 70% at 50% 0%,rgba(37,99,235,0.2),transparent 60%),#0a1730}
+.offer{background:radial-gradient(ellipse 50% 60% at 85% 15%,rgba(37,99,235,0.12),transparent 55%),var(--navy)}
 </style>
 </head>
 <body>
@@ -235,6 +247,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
 <!-- HERO — Shield -->
 <section class="hero">
   <div class="hero-content">
+    <span class="status-pill"><span class="dot"></span>Now booking discovery calls</span>
     <p class="hero-eyebrow">Sovereign AI Infrastructure</p>
     <h1 class="hero-title">
       <span class="l1">Your AI.</span>
@@ -346,7 +359,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
           <span class="pillar-label amber">Policy</span>
         </div>
         <h3>Built for compliance.</h3>
-        <p>GDPR, HIPAA, legal professional privilege, classified-adjacent workflows — sovereign AI is the only architecture that satisfies them all by default. Not as a configuration. As a foundation.</p>
+        <p>GDPR, HIPAA, legal professional privilege, and the most sensitive regulated workflows — sovereign AI is the only architecture that satisfies them all by default. Not as a configuration. As a foundation.</p>
       </div>
 
     </div>
@@ -432,7 +445,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
       <div class="tier">
         <p class="tier-badge">Agency</p>
         <h3>Critical Infrastructure</h3>
-        <p class="tier-desc">Government bodies, defence-adjacent organisations, and institutions where data sovereignty is a legal and operational requirement.</p>
+        <p class="tier-desc">Government bodies, public institutions, and regulated enterprises where data sovereignty is a legal and operational requirement.</p>
         <div class="tier-visual">
           <!-- Institutional building with columns -->
           <svg width="64" height="72" viewBox="0 0 64 72" fill="none">
@@ -454,7 +467,7 @@ footer{padding:2.5rem 4rem;background:var(--bg);border-top:1px solid var(--borde
         </div>
         <ul class="tier-list">
           <li>Air-gapped deployment</li>
-          <li>Classified-adjacent architecture</li>
+          <li>Hardened, isolated architecture</li>
           <li>ESG + AI compliance reporting</li>
           <li>Resilience and continuity planning</li>
           <li>On-site installation and training</li>

@@ -18,13 +18,13 @@ Solas deploys private, local AI systems that never connect to the cloud — from
 |---|---|---|
 | **Office** | Law firms, accountants, medical practices | From €299/month |
 | **Enterprise** | NGOs, multinationals, regulated organisations | Custom |
-| **Agency** | Government, defence-adjacent, critical infrastructure | Custom / engagement |
+| **Agency** | Government, public sector, regulated industries | Custom / engagement |
 
 ## Three Pillars
 
 - **Privacy** — data never leaves your building
 - **Power** — local hardware, no compounding cloud costs
-- **Policy** — GDPR, HIPAA, and classified-adjacent compliance by default
+- **Policy** — GDPR, HIPAA, and the most stringent regulated standards by default
 
 ## Tech Stack
 
