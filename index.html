@@ -922,29 +922,14 @@ nav.scrolled{padding-top:0.7rem;padding-bottom:0.7rem;background:rgba(9,19,34,0.
         </div>
         <p class="contact-trust">Private by default · Engagements confidential · References available on request.</p>
       </div>
-      <!-- No backend yet: JS builds a mailto: on submit instead of a declarative form action (a mailto action attribute trips Chrome's "form not secure" autofill warning). Swap for a Formspree endpoint any time for a proper inbox flow. -->
-      <form class="cform" id="cform">
-        <div class="fld"><label>Name</label><input type="text" name="Name" required></div>
-        <div class="fld"><label>Work email</label><input type="email" name="Email" required></div>
-        <div class="fld"><label>Organization</label><input type="text" name="Organization"></div>
-        <div class="fld"><label>What do you need?</label>
-          <select name="Interest">
-            <option>AI Readiness Assessment</option>
-            <option>Enterprise AI Strategy</option>
-            <option>Trusted AI Architecture</option>
-            <option>Infrastructure Modernization</option>
-            <option>AI Governance Roadmap</option>
-            <option>Executive AI Workshop</option>
-            <option>Programme Leadership</option>
-            <option>Fractional AI Strategy</option>
-            <option>Co-Founder / Join the Mission</option>
-            <option>Not sure yet</option>
-          </select>
-        </div>
-        <div class="fld"><label>Anything to add?</label><textarea name="Message"></textarea></div>
-        <button type="submit" class="btn-primary">Send message</button>
-        <p class="alt">Prefer email? <a href="mailto:contact@solassovereignsystems.ai?subject=Solas%20Discovery%20Conversation">contact@solassovereignsystems.ai</a></p>
-      </form>
+      <!-- No backend yet. mailto: links only work if the visitor has a default mail app configured, so the address is shown in full with a copy button as the reliable path — mailto is offered as a bonus, not the only option. -->
+      <div class="cform">
+        <label style="display:block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:.6rem">Email Solas directly</label>
+        <input id="email-display" type="text" readonly value="contact@solassovereignsystems.ai" onclick="this.select()" style="width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:6px;padding:12px 14px;margin-bottom:1rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.98rem;cursor:text">
+        <button type="button" id="copy-email-btn" class="btn-primary" style="width:100%">Copy email address</button>
+        <p class="alt">Have a mail app set up? <a href="mailto:contact@solassovereignsystems.ai?subject=Solas%20Website%20Inquiry">Open in your email app →</a></p>
+        <p style="font-size:.78rem;color:var(--text3);line-height:1.6;margin-top:1.2rem">Tell us your name, organization, and what you need — readiness assessment, strategy, architecture, governance, or a co-founder conversation.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1007,15 +992,26 @@ if(h1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   h1.style.animation='none'; h1.style.opacity='1';
 }
 
-const cform=document.getElementById('cform');
-if(cform){
-  cform.addEventListener('submit',function(e){
-    e.preventDefault();
-    const f=new FormData(cform);
-    const lines=['Name: '+f.get('Name'),'Email: '+f.get('Email'),'Organization: '+(f.get('Organization')||'—'),'Interest: '+f.get('Interest'),'','Message:',f.get('Message')||'—'];
-    const subject=encodeURIComponent('Solas Website Inquiry — '+f.get('Interest'));
-    const body=encodeURIComponent(lines.join('\n'));
-    window.location.href='mailto:contact@solassovereignsystems.ai?subject='+subject+'&body='+body;
+const copyBtn=document.getElementById('copy-email-btn');
+const emailInput=document.getElementById('email-display');
+if(copyBtn && emailInput){
+  copyBtn.addEventListener('click',function(){
+    const email=emailInput.value;
+    const orig=copyBtn.textContent;
+    const flash=(msg)=>{copyBtn.textContent=msg;setTimeout(()=>{copyBtn.textContent=orig;},2200);};
+    const selectFallback=()=>{
+      emailInput.select();
+      emailInput.setSelectionRange(0,email.length);
+      try{
+        if(document.execCommand('copy')){flash('Copied ✓');return;}
+      }catch(e){}
+      flash('Selected — press ⌘/Ctrl+C');
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(()=>flash('Copied ✓')).catch(selectFallback);
+    } else {
+      selectFallback();
+    }
   });
 }
 </script>
