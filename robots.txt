@@ -1,0 +1,19 @@
+# Solas Sovereign Systems
+# Search indexing and AI citation are welcome. Training on this content is not.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
+
+# Opt out of AI-training-specific crawlers even where they respect Disallow
+# over Content-Signal. Search and answer-citation crawlers are left open.
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://solassovereignsystems.ai/sitemap.xml
