@@ -922,8 +922,8 @@ nav.scrolled{padding-top:0.7rem;padding-bottom:0.7rem;background:rgba(9,19,34,0.
         </div>
         <p class="contact-trust">Private by default · Engagements confidential · References available on request.</p>
       </div>
-      <!-- Submits via mailto (no backend required). Swap action/method for a Formspree endpoint any time for a proper inbox flow. -->
-      <form class="cform" action="mailto:contact@solassovereignsystems.ai?subject=Solas%20Website%20Inquiry" method="get" enctype="text/plain">
+      <!-- No backend yet: JS builds a mailto: on submit instead of a declarative form action (a mailto action attribute trips Chrome's "form not secure" autofill warning). Swap for a Formspree endpoint any time for a proper inbox flow. -->
+      <form class="cform" id="cform">
         <div class="fld"><label>Name</label><input type="text" name="Name" required></div>
         <div class="fld"><label>Work email</label><input type="email" name="Email" required></div>
         <div class="fld"><label>Organization</label><input type="text" name="Organization"></div>
@@ -1005,6 +1005,18 @@ if(h1 && !matchMedia('(prefers-reduced-motion: reduce)').matches){
     }
   });
   h1.style.animation='none'; h1.style.opacity='1';
+}
+
+const cform=document.getElementById('cform');
+if(cform){
+  cform.addEventListener('submit',function(e){
+    e.preventDefault();
+    const f=new FormData(cform);
+    const lines=['Name: '+f.get('Name'),'Email: '+f.get('Email'),'Organization: '+(f.get('Organization')||'—'),'Interest: '+f.get('Interest'),'','Message:',f.get('Message')||'—'];
+    const subject=encodeURIComponent('Solas Website Inquiry — '+f.get('Interest'));
+    const body=encodeURIComponent(lines.join('\n'));
+    window.location.href='mailto:contact@solassovereignsystems.ai?subject='+subject+'&body='+body;
+  });
 }
 </script>
 </body>
